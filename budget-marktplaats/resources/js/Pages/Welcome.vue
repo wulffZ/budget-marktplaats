@@ -11,10 +11,10 @@ defineProps({
 <template>
     <Head title="Welkom"/>
 
-    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 bg-primary sm:items-center sm:pt-0">
+    <div class="relative flex items-top justify-center min-h-screen bg-gray-800 sm:items-center sm:pt-0">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                <img src="storage/images/banner-white.png" class="w-96 ml-8">
+                <img src="storage/images/banner-white.png" class="w-96 ml-8 rounded-md border border-white">
             </div>
 
             <div class="mt-8 bg-white bg-neutral overflow-hidden shadow sm:rounded-lg">
@@ -93,16 +93,16 @@ defineProps({
                         </div>
                         <div v-if="canLogin" class=" px-6 py-4 sm:block">
                             <Link v-if="$page.props.user" :href="route('dashboard')"
-                                  class="text-sm text-secondary underline">Dashboard
+                                  class="text-sm underline">Dashboard
                             </Link>
 
                             <template v-else>
-                                <Link :href="route('login')" class="text-sm text-secondary underline">
+                                <Link :href="route('login')" class="text-sm underline">
                                     Log in
                                 </Link>
 
                                 <Link v-if="canRegister" :href="route('register')"
-                                      class="ml-4 text-sm text-secondary underline">Register
+                                      class="ml-4 text-sm underline">Register
                                 </Link>
                             </template>
                         </div>

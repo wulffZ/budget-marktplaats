@@ -11,14 +11,13 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('post_images', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
-            $table->string('description', 130);
-            $table->string('category');
-            $table->boolean('soft_delete')->default('0');
+            $table->bigInteger('post_id')->unsigned();
+            $table->foreign('post_id')->references('id')->on('posts');
+            $table->string('file_uri');
             $table->timestamps();
         });
     }
@@ -28,8 +27,8 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('postimage');
     }
 };

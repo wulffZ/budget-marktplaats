@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="luxury">
     <head>
         <meta name="csrf-token" content="{{ csrf_token()}}">
         <meta charset="utf-8">
