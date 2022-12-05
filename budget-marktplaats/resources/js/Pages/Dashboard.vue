@@ -26,7 +26,7 @@ const props = defineProps({
                     <div class="carousel w-full">
                         <div :id="`slide${ image['id']}`" v-for="image in post.images"
                              class="carousel-item relative w-full">
-                            <img :src="`storage/photos/${ image['file_uri'] }`">
+                            <img :src="`storage/photos/${ image['file_uri'] }`" class="object-contain">
                         </div>
                     </div>
                     <div class="flex justify-center w-full py-2 gap-2">
@@ -42,8 +42,8 @@ const props = defineProps({
                             <tools-icon v-if="post.category === 'tools'"></tools-icon>
                         </div>
                         <p>{{ post.description }}</p>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Bekijk</button>
+                        <div class="card-actions justify-end mb-4">
+                            <a class="btn btn-primary" :href="route('post.show', post.id)">Bekijk</a>
                         </div>
                     </div>
                 </div>

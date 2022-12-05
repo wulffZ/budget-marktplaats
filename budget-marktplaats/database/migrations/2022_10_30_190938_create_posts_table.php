@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
+            $table->string('user_id');
             $table->string('description', 130);
             $table->string('category');
             $table->boolean('soft_delete')->default('0');

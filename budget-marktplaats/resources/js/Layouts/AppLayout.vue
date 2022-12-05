@@ -28,7 +28,7 @@ const logout = () => {
                             </svg>
                         </a>
                         <ul class="p-2">
-                            <li><a class="btn" :href="route('post.show.create')">Nieuwe advertentie</a></li>
+                            <li><a class="btn" :href="route('post.create')">Nieuwe advertentie</a></li>
                             <li><a class="btn mt-1">overzicht</a></li>
                         </ul>
                     </li>

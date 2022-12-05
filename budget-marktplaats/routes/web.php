@@ -24,9 +24,21 @@ Route::middleware([
     // Dashboard
     Route::get('/dashboard', [PostController::class, "index"])->name('dashboard');
 
-    // Post create page
-    Route::get('/post/create', [PostController::class, "create"])->name('post.show.create');
+    // Create
+    Route::get('/post/create', [PostController::class, "create"])->name('post.create');
 
-    // Post store
-    Route::post('/post/create}', [PostController::class, "store"])->name('post.store');
+    // Store
+    Route::post('/post/create', [PostController::class, "store"])->name('post.store');
+
+    // Show
+    Route::get('/post/update/{id}', [PostController::class, "edit"])->name('post.edit');
+
+    // Edit
+    Route::get('/post/{id}', [PostController::class, "show"])->name('post.show');
+
+    // Delete
+    Route::get('/post/delete/{id}', [PostController::class, "destroy"])->name('post.destroy');
+
+    // Post edit
+    Route::post('/post/update/{id}', [PostController::class, "update"])->name('post.update');
 });
