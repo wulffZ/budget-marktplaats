@@ -32,7 +32,6 @@ const logout = () => {
                             <li><a class="btn mt-1">overzicht</a></li>
                         </ul>
                     </li>
-                    <li><a>Item 3</a></li>
                 </ul>
             </div>
             <div class="flex-1 justify-between">

@@ -23,13 +23,13 @@ const props = defineProps({
             <div class="grid grid-cols-3 gap-12 max-w-6xl mx-auto">
                 <div v-for="post in posts" class="card w-96 bg-secondary shadow-xl">
                     <div class="carousel w-full">
-                        <div :id="`slide${ image['id']}`" v-for="image in post.images"
+                        <div :id="`slide${ image.id }`" v-for="image in post.images"
                              class="carousel-item relative w-full">
                             <img :src="`storage/photos/${ image['file_uri'] }`" class="object-contain">
                         </div>
                     </div>
                     <div class="flex justify-center w-full py-2 gap-2">
-                        <a :href="`#slide${ image['id'] }`" v-for="(image, index) in post.images"
+                        <a :href="`#slide${ image.id }`" v-for="(image, index) in post.images"
                            class="btn btn-xs">{{ index + 1 }}</a>
                     </div>
                     <div class="card-body py-2">
@@ -43,38 +43,56 @@ const props = defineProps({
                         <h2 class="card-title text-xs">Aangeboden door {{ post.user.name }}</h2>
                         <p>{{ post.description }}</p>
                         <div class="divider"></div>
-                        <div v-for="bid in post.bids.sort((a, b) => (b.amount > a.amount) ? 1 : -1)">
-                            <p><span class="font-semibold">{{ bid.amount }}</span> geboden op <span
-                                class="font-semibold">{{ bid.created_at.slice(0, 10) }}</span></p>
-                            <label for="user-info"><span class="text-sm">door <span class="underline">
-                                {{ bid.user.name }}</span></span></label>
-                            <div class="divider"></div>
 
-                            <input type="checkbox" id="user-info" class="modal-toggle"/>
-                            <div class="modal">
-                                <div class="modal-box relative">
-                                    <label for="user-info"
-                                           class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                                    <h3 class="text-lg font-bold">Gebruikersinformatie</h3>
-                                    <div class="stats stats-vertical shadow bg-secondary w-full mt-2">
+                        <div class="max-h-64 overflow-y-auto">
+                            <div v-for="bid in post.bids.sort((a, b) => (b.amount > a.amount) ? 1 : -1)">
+                                <p>
+                                <span class="font-semibold">
+                                    {{ bid.amount }}
+                                </span>
+                                    geboden op
+                                    <span class="font-semibold">
+                                    {{ bid.created_at.slice(0, 10) }}
+                                </span>
+                                </p>
 
-                                        <div class="stat">
-                                            <div class="stat-title">Gebruikersnaam</div>
-                                            <div class="stat-value text-xl">{{ post.user.name }}</div>
-                                        </div>
+                                <label for="user-info"><span class="text-sm">
+                                door
+                                <span class="underline">
+                                    {{ bid.user.name }}
+                                </span>
+                            </span>
+                                </label>
+                                <div class="divider"></div>
 
-                                        <div class="stat">
-                                            <div class="stat-title">Email</div>
-                                            <div class="stat-value text-xl">{{ post.user.email }}</div>
-                                        </div>
+                                <input type="checkbox" id="user-info" class="modal-toggle"/>
+                                <div class="modal">
+                                    <div class="modal-box relative">
+                                        <label for="user-info"
+                                               class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                        <h3 class="text-lg font-bold">Gebruikersinformatie</h3>
+                                        <div class="stats stats-vertical shadow bg-secondary w-full mt-2">
 
-                                        <div class="stat">
-                                            <div class="stat-title">Lid sinds</div>
-                                            <div class="stat-value text-xl">{{ post.user.created_at.slice(0, 10) }}
+                                            <div class="stat">
+                                                <div class="stat-title">Gebruikersnaam</div>
+                                                <div class="stat-value text-xl">{{ post.user.name }}</div>
+                                            </div>
+
+                                            <div class="stat">
+                                                <div class="stat-title">Email</div>
+                                                <div class="stat-value text-xl">{{ post.user.email }}</div>
+                                            </div>
+
+                                            <div class="stat">
+                                                <div class="stat-title">Lid sinds</div>
+                                                <div class="stat-value text-xl">{{ post.user.created_at.slice(0, 10) }}
+                                                </div>
                                             </div>
                                         </div>
+                                        <p class="py-4">Als u deze gebruiker wilt contacteren, klik <a class="underline"
+                                                                                                       href="mailto: {{ post.user.email }}">hier</a>
+                                        </p>
                                     </div>
-                                    <p class="py-4">Als u deze gebruiker wilt contacteren, klik <a class="underline" href="mailto: {{ post.user.email }}">hier</a></p>
                                 </div>
                             </div>
                         </div>

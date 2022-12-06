@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bid;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -23,7 +24,7 @@ class BidController extends Controller
 
         $bid = Bid::create([
             'amount' => $request->amount,
-            'user_id' => 1,
+            'user_id' => Auth::id(),
             'post_id' => $request->post_id,
         ]);
     }

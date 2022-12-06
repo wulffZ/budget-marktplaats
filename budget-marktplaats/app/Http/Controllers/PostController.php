@@ -17,7 +17,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('images','user', 'bids.user')->get();
+        $posts = Post::with('images','user','bids.user')->get();
 
         return Inertia::render(
             'Dashboard',
@@ -116,10 +116,14 @@ class PostController extends Controller
 
     public function destroy($id)
     {
-        $post = Post::with('images')->findOrFail($id);
+        $post = Post::with('images', 'bids')->findOrFail($id);
 
         if (Auth::id() != $post->user_id) {
             return '401';
+        }
+
+        foreach ($post->bids as $bid) {
+            $bid->delete();
         }
 
         foreach ($post->images as $postImage) {
