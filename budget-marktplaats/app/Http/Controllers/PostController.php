@@ -17,7 +17,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('images')->get();
+        $posts = Post::with('images','user', 'bids.user')->get();
 
         return Inertia::render(
             'Dashboard',
@@ -29,7 +29,7 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $post = Post::with('images')->findOrFail($id);
+        $post = Post::with('images', 'user', 'bids.user')->findOrFail($id);
 
         return Inertia::render(
             'Post/Show',

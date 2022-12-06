@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BidController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -41,4 +42,10 @@ Route::middleware([
 
     // Post edit
     Route::post('/post/update/{id}', [PostController::class, "update"])->name('post.update');
+
+    // Bid store
+    Route::post('/bid', [BidController::class, "store"])->name('bid.store');
+
+    // Bid destroy
+    Route::get('/bid/{id}', [BidController::class, "destroy"])->name('bid.destroy');
 });
