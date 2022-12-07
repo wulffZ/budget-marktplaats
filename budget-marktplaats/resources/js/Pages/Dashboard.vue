@@ -20,7 +20,6 @@ const props = defineProps({
 
 
         <div class="flex flex-col h-screen justify-between mt-4">
-            <div class="grid grid-cols-3 gap-12 max-w-6xl mx-auto">
                 <div v-for="post in posts" class="card w-96 bg-secondary shadow-xl">
                     <div class="carousel w-full">
                         <div :id="`slide${ image.id }`" v-for="image in post.images"
@@ -102,7 +101,6 @@ const props = defineProps({
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </AppLayout>
 </template>
